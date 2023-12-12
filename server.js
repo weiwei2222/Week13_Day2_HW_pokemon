@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const jsxViewEngine = require("jsx-view-engine");
-const pokemon = require("./models/pokemon.js");
+const pokemons = require("./models/pokemons.js");
 
 app.set("view engine", "jsx");
 app.set("views", "./views");
@@ -14,11 +14,11 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/pokemon", (req, res) => {
-  res.render("Index", { pokemon: pokemon });
+  res.render("Index", { pokemon: pokemons });
 });
 
 app.get("/pokemon/:id", (req, res) => {
-  res.render("Show", { pokemon: pokemon[req.params.id] });
+  res.render("Show", { pokemon: pokemons[req.params.id] });
 });
 
 app.listen(3000, () => {
