@@ -11,23 +11,22 @@ class Index extends React.Component {
     return (
       <div style={myStyle}>
         <h1>See All The Pokemon!</h1>
-
-        {pokemon.map((pokemon, i) => {
-          return (
-            <ul>
-              <a href={`/pokemon/${i}`}>
-                <li>
+        <ul>
+          {pokemon.map((pokemon, i) => {
+            return (
+              <li key={i}>
+                <a href={`/pokemon/${i}`}>
                   Name:
                   <br />
                   {pokemon.name}
                   <br />
                   Img: <br />
                   <img src={pokemon.img} />
-                </li>
-              </a>
-            </ul>
-          );
-        })}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
