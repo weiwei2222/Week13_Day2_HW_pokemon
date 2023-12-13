@@ -72,16 +72,6 @@ app.get("/pokemon/:id", async (req, res) => {
   }
 });
 
-// delete
-app.delete("/pokemon/:id", async (req, res) => {
-  try {
-    const deletePokemon = await Pokemon.findByIdAndDelete(req.params.id);
-    res.status(200).redirect("/pokemon");
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
 // edit
 app.get("/pokemon/:id/edit", async (req, res) => {
   try {
@@ -97,10 +87,19 @@ app.put("/pokemon/:id", async (req, res) => {
   try {
     const updatedPokemon = await Pokemon.findByIdAndUpdate(
       req.params.id,
-      req.body,
-      { new: true }
+      req.body
     );
     res.status(200).redirect(`/pokemon/${req.params.id}`);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+// delete
+app.delete("/pokemon/:id", async (req, res) => {
+  try {
+    const deletePokemon = await Pokemon.findByIdAndDelete(req.params.id);
+    res.status(200).redirect("/pokemon");
   } catch (err) {
     res.status(400).send(err);
   }

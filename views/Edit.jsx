@@ -4,13 +4,12 @@ const imgsize = {
   height: "100px",
 };
 const pokenum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-
 class Edit extends React.Component {
   render() {
     return (
       <div>
-        <h1>Edit the Pokemon</h1>
-        <from
+        <h1> Edit the pokemon</h1>
+        <form
           action={`/pokemon/${this.props.pokemon._id}?_method=PUT`}
           method="POST"
         >
@@ -34,7 +33,6 @@ class Edit extends React.Component {
                   }.png`}
                 />
                 <img
-                  key={index}
                   style={imgsize}
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
                     pokenum[num - 1]
@@ -43,12 +41,11 @@ class Edit extends React.Component {
               </label>
             );
           })}
-        </from>
-        <br />
-        <input type="submit" value="Submit Changes" />
+          <br />
+          <input type="submit" value="Submit Changes" />
+        </form>
       </div>
     );
   }
 }
-
 module.exports = Edit;
