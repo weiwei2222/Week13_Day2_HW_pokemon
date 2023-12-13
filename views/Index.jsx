@@ -14,6 +14,11 @@ class Index extends React.Component {
         <a href="/pokemon/new" style={myStyle}>
           Creat new Pokemon
         </a>
+        <form action="/pokemon/search" method="post">
+          search by name:
+          <input type="text" name="name" />
+          <button type="submit">submit</button>
+        </form>
         <ul>
           {pokemon.map((pokemon, i) => {
             return (
